@@ -5,6 +5,7 @@ import Dex from './doc_page/real_doc.jsx';
 import PokemonDetail from './doc_page/pokemon_detail';
 import { useState } from 'react';
 import { MOCK_POKEMONS } from "./pokemon_data/data";
+import { SelectedPokemonProvider } from './context/pokeCont';
 
 function App() {
   const [selected, setSelected] = useState([]);
@@ -24,6 +25,7 @@ function App() {
   };
 
   return (
+    <SelectedPokemonProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,6 +33,7 @@ function App() {
         <Route path="/detail/:id" element={<PokemonDetail />} />
       </Routes>
     </BrowserRouter>
+    </SelectedPokemonProvider>
   );
 }
 

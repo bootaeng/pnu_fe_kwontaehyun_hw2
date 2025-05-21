@@ -1,11 +1,18 @@
 import { createContext, useContext, useState } from 'react';
 import { toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
-
+import { useEffect } from 'react';
 const SelectedPokemonContext = createContext();
 
 export function SelectedPokemonProvider({ children }) {
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(() => {
+    const saved = localStorage.getItem("selectedPokemon");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("selectedPokemon", JSON.stringify(selected));
+  }, [selected]);
 
   const addPokemon = (pokemon) => {
     if (selected.length >= 6) {
