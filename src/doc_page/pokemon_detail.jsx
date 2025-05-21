@@ -4,12 +4,19 @@ import { MOCK_POKEMONS } from '../pokemon_data/data';
 
 const Container = styled.div`
   padding: 48px 16px;
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
   text-align: center;
+  display: block;
 `;
 
 const Img = styled.img`
   width: 160px;
   margin-bottom: 24px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const Name = styled.h2`
